@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using ProjectManagementApp.Data;
 using Scalar.AspNetCore;
 using System;
 
@@ -10,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 //db registering
-//builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
