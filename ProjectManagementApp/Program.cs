@@ -26,12 +26,9 @@ builder.Services.AddScoped<JWTHelper>();
 //db registering
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.Configure<JWTSettings>(
-    builder.Configuration.GetSection("JwtSettings"));
+builder.Services.Configure<JWTSettings>(builder.Configuration.GetSection("JwtSettings"));
 
-var jwtSettings = builder.Configuration
-    .GetSection("JwtSettings")
-    .Get<JWTSettings>();
+var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JWTSettings>();
 
 //JWT Verification Service
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -51,6 +48,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
+//using DbSeeder file to seed data into the database
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+    await DbSeeder.SeedAsync(context);
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -59,7 +64,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
