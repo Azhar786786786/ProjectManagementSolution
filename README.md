@@ -99,3 +99,17 @@ including security, maintainability, performance optimization, exception handlin
 	
 14.	How to check our code through Scalar
 	https://localhost:7022/scalar/
+	
+15.	Added DTOs Folder and added their classes
+
+16.	Added AuthController
+
+17.	Install one more Package for JWT Bearer Token
+	Microsoft.AspNetCore.Authentication.JwtBearer
+	
+18.	Install one more Package for Encryption Data
+	BCrypt.Net-Next
+	
+19.	Added Helpers Folder and their classes
+
+20.	Added configurations and registers all details in Program.cs class
