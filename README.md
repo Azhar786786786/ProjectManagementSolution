@@ -63,7 +63,7 @@ including security, maintainability, performance optimization, exception handlin
 ## Configuring EFCORE:
 
 
-01.  Install required Packages (3)
+01. Install required Packages (3)
 	Microsoft.EntityFrameworkCore
 	Microsoft.EntityFrameworkCore.SqlServer
 	Microsoft.EntityFrameworkCore.Tools
@@ -93,3 +93,9 @@ including security, maintainability, performance optimization, exception handlin
 	update-database
 	
 12.	Clean Up the code
+
+13.	How to check our code through OpenAPI
+	https://localhost:7022/openapi/v1.json
+	
+14.	How to check our code through Scalar
+	https://localhost:7022/scalar/
